@@ -8,3 +8,11 @@
 hey another line
 
 line 1000
+
+install.packages("blogdown")
+library(blogdown)
+install_hugo()
+hugo_version()
+
+
+
