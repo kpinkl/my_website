@@ -1,7 +1,7 @@
 # Site settings
-baseURL = "http://example.org/"
+baseURL = "https://konstantinpinkl.netlify.app/"
 languageCode = "en-us"
-title = "Konstantin Pinkl"
+title = "Portfolio website for Konstantin Pinkl"
 theme = "forty"
 
 # Enter your tracking code to enable Google Analytics
@@ -20,7 +20,7 @@ disqusShortname = ""
 
   # Provide your metadata here.
   name = "Konstantin Pinkl"
-  description = "LBS MFA2021"
+  description = "LBS MFA2021 student"
 
   # Link custom assets relative to /static
   custom_css = []
@@ -68,7 +68,7 @@ disqusShortname = ""
 
     # Button Style 1
     [[params.navigation.button1]]
-      name = "Get Started"
+      name = "To begin"
       url = "blogs"
 
     # Button Style 2
@@ -83,7 +83,7 @@ disqusShortname = ""
     # the 'static/img' folder.
     title = "Hi, my name is Konstantin Pinkl"
     subtitle = "Portfolio website."
-    buttonText = "Get Started"
+    buttonText = "TO begin"
 
 
   # Tiles Section
@@ -92,10 +92,10 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Aliquam"
-      subtitle = "Ipsum Dolor Sit Amet"
+      title = "Blog1"
+      subtitle = "Description Blog 1"
       image = "pic01.jpg"
-      url = "blogs/aliquam"
+      url = "blogs/blog1"
 
     [[params.tiles.showcase]]
       title = "Tempus"
@@ -172,7 +172,7 @@ disqusShortname = ""
     # by copying the corresponding map with frontmatter code.
     [[params.contact.email]]
     title = "Email"
-    email = "example@domain.com"
+    email = "kpinkl.mfa2021@london.edu"
 
     [[params.contact.phone]]
     title = "Phone"
