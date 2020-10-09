@@ -6,4 +6,4 @@ slug: blogs
 title: Overview
 ---
 
-My blogs on my learning experience with R.
+Blogs highlighting my learning experience with R.
