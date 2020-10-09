@@ -82,7 +82,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Konstantin Pinkl - Personal Portfolio"
-    subtitle = "Welcome! My name is Konstantin Pinkl, I am an LBS Masters in Finacial Analysis student at London Business School. This page shares my learning experiences with R."
+    subtitle = "Welcome! My name is Konstantin Pinkl, I am a LBS Masters in Finacial Analysis student at London Business School. This page shares my learning experiences with R."
     buttonText = "Start"
 
 
@@ -95,37 +95,38 @@ disqusShortname = ""
       title = "About me"
       subtitle = "Konstantin Pinkl, LBS MFA2021"
       image = "Kon-Art2018.jpg"
-      url = "blogs/About me"
+      url = "blogs/About_me"
 
     [[params.tiles.showcase]]
       title = "Blog 2"
       subtitle = "Blog 2 Description"
       image = "pic02.jpg"
-      url = "blogs/Blog 2"
+      url = "blogs/blog1"
 
     [[params.tiles.showcase]]
       title = "Magna"
       subtitle = "Lorem Etiam Nullam"
       image = "pic03.jpg"
-      url = "blogs/magna"
+      url = "blogs/blog2"
 
     [[params.tiles.showcase]]
       title = "Ipsum"
       subtitle = "Nisl Sed Aliquam"
       image = "pic04.jpg"
-      url = "blogs/ipsum"
+      url = "blogs/blog3"
 
     [[params.tiles.showcase]]
       title = "Consequat"
       subtitle = "Ipsum Dolor Sit Amet"
       image = "pic05.jpg"
-      url = "blogs/ipsum"
+      url = "blogs/blog4"
 
-    [[params.tiles.showcase]]
-      title = "Etiam"
-      subtitle = "Feugiat Amet Tempus"
-      image = "pic06.jpg"
-      url = "blogs/ipsum"
+    #[[params.tiles.showcase]]
+     # title = "Etiam"
+     # subtitle = "Feugiat Amet Tempus"
+      #image = "pic06.jpg"
+      #url = "blogs/ipsum"
+    
     # You can make more showcases by copy and pasting the code above
 
   [params.blog]
