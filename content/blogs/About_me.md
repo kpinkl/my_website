@@ -11,4 +11,21 @@ slug: blogs
 title: About me
 ---
 
-Name: Konstantin Pinkl
+#Key facts
+
+* **Name: Konstantin Pinkl**
+* Age: 25
+* Nationality: German
+
+#Education
+
+* Training qualification: Industrial clerk at [Vaillant GmbH](https://www.vaillant-group.com/)
+* A-levels: Berufliche Oberschule Schwandorf
+* Bachelor: Bachelor of Science (Business Administration) at [LMU Munich](https://www.en.uni-muenchen.de/index.html)
+* Master: Master of Science at [London Business School](https://www.london.edu/)
+
+#Professional Experience
+
+* Deloitte GmbH: Intern | Financial Advisory, Sport Business Group
+* UniCredit AG: Intern | Investment Banking, M&A, ECM
+* Deutsche Bank AG: Summer Analyst | Investment Banking, M&A, ECM
