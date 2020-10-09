@@ -95,7 +95,7 @@ disqusShortname = ""
       title = "About me"
       subtitle = "Konstantin Pinkl, LBS MFA2021"
       image = "Kon-Art2018.jpg"
-      url = "blogs/About_me"
+      url = "blogs/about-me"
 
     [[params.tiles.showcase]]
       title = "Blog 2"

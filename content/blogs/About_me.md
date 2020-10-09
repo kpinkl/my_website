@@ -22,7 +22,7 @@ title: About me
 * Training qualification: Industrial clerk at [Vaillant GmbH](https://www.vaillant-group.com/)
 * A-levels: Berufliche Oberschule Schwandorf
 * Bachelor: Bachelor of Science (Business Administration) at [LMU Munich](https://www.en.uni-muenchen.de/index.html)
-* Master: Master of Science at [London Business School](https://www.london.edu/)
+* Master: Master of Science (Masters in Financial Analysis) at [London Business School](https://www.london.edu/)
 
 # Professional Experience
 
