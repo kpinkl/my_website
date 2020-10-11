@@ -98,26 +98,26 @@ disqusShortname = ""
       url = "blogs/about-me1"
 
     [[params.tiles.showcase]]
-      title = "Blog 2"
-      subtitle = "Blog 2 Description"
+      title = "Blog 1"
+      subtitle = "Blog 1 Description"
       image = "pic02.jpg"
       url = "blogs/blog1"
 
     [[params.tiles.showcase]]
-      title = "Magna"
-      subtitle = "Lorem Etiam Nullam"
+      title = "Blog 2"
+      subtitle = "Blog 2 Description"
       image = "pic03.jpg"
-      url = "blogs/Magna"
+      url = "blogs/blog2"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
-      subtitle = "Nisl Sed Aliquam"
+      title = "Blog 3"
+      subtitle = "Blog 3 Description"
       image = "pic04.jpg"
       url = "blogs/blog3"
 
     [[params.tiles.showcase]]
-      title = "Consequat"
-      subtitle = "Ipsum Dolor Sit Amet"
+      title = "Blog 4"
+      subtitle = "Blog 4 Description"
       image = "pic05.jpg"
       url = "blogs/blog4"
 
