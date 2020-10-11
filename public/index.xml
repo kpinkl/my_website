@@ -37,22 +37,21 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>blog14</title>
-      <link>/blogs/blog14/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs/blog14/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
-    </item>
-    
-    <item>
       <title>Climate change and temperature anomalies</title>
       <link>/blogs/blog7/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blogs/blog7/</guid>
       <description>Aproachweather &amp;lt;- read_csv(&amp;quot;https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv&amp;quot;, skip = 1, na = &amp;quot;***&amp;quot;)weather_selected &amp;lt;- select(weather, Year:Dec)weather_selected_long &amp;lt;- weather_selected %&amp;gt;% pivot_longer(cols = 2:13, #columns 2 to 13names_to = &amp;quot;Month&amp;quot;,values_to = &amp;quot;delta&amp;quot;)tidyweather &amp;lt;- weather_selected_long %&amp;gt;%mutate(date = ymd(paste(as.character(Year), Month, &amp;quot;1&amp;quot;)),month = month(date, label=TRUE),year = year(date))ggplot(tidyweather, aes(x=date, y = delta))+geom_point()+geom_smooth(color=&amp;quot;red&amp;quot;) +theme_bw() +labs (title = &amp;quot;Weather Anomalies&amp;quot;)Is the effect of increasing temperature more pronounced in some months?</description>
+    </item>
+    
+    <item>
+      <title>Finale please</title>
+      <link>/blogs/blog15/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog15/</guid>
+      <description>glimpse(gapminder)## Rows: 1,704## Columns: 6## $ country &amp;lt;fct&amp;gt; Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afgha...## $ continent &amp;lt;fct&amp;gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asi...## $ year &amp;lt;int&amp;gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 199...## $ lifeExp &amp;lt;dbl&amp;gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 4...## $ pop &amp;lt;int&amp;gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372,...## $ gdpPercap &amp;lt;dbl&amp;gt; 779.</description>
     </item>
     
     <item>

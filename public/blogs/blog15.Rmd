@@ -1,0 +1,100 @@
+---
+title: "Finale please"
+output: html_document
+---
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: "Finale please"
+draft: false
+image: pic10.jpg
+keywords: ""
+slug: blog15
+title: Finale please
+---
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+```
+
+```{r}
+glimpse(gapminder)
+
+head(gapminder, 20) # look at the first 20 rows of the dataframe
+
+```
+
+Your task is to produce two graphs of how life expectancy has changed over the years for the `country` and the `continent` you come from. 
+
+I have created the `country_data` and `continent_data` with the code below. 
+
+```{r}
+country_data <- gapminder %>% 
+            filter(country == "Germany") # just choosing Germany, as this is where I come from
+
+continent_data <- gapminder %>% 
+            filter(continent == "Europe")
+```
+
+First, create a plot of life expectancy over time for the single country you chose. You should use  `geom_point()` to see the actual data points and `geom_smooth(se = FALSE)`  to plot the underlying trendlines. You need to remove the comments **#** from the lines below for your code to run.
+
+```{r, lifeExp_one_country}
+plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+geom_point() +
+geom_smooth(se = FALSE)+
+NULL 
+
+plot1
+```
+
+Next we need to add a title. Create a new plot, or extend plot1, using the `labs()` function to add an informative title to the plot.
+
+```{r, lifeExp_one_country_with_label}
+  plot2 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  labs(title = "Life expectancy development in Germany",
+  x = "Year",
+  y = "Life Expectancy") +
+NULL
+
+
+print(plot2)
+```
+
+
+Secondly, produce a plot for all countries in the *continent* you come from. (Hint: map the `country` variable to the colour aesthetic).  
+
+```{r lifeExp_one_continent}
+ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= country))+
+    geom_point() + 
+    geom_smooth(se = FALSE) +
+    NULL
+```
+
+Finally, using the original `gapminder` data, produce a life expectancy over time graph, grouped (or faceted) by continent. We will remove all legends, adding the `theme(legend.position="none")` in the end of our ggplot.
+
+```{r lifeExp_facet_by_continent}
+ ggplot(data = gapminder , mapping = aes(x = year  , y =  lifeExp, colour= country))+
+    geom_point() + 
+    geom_smooth(se = FALSE) +
+    facet_wrap(~continent) +
+    theme(legend.position="none") + 
+    NULL
+```
+
+Given these trends, what can you say about life expectancy since 1952? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
+
+> Type your answer after this blockquote.
+
+# Germany
+
+Life expectancy in Germany has been almost linearly increasing since 1952. Nowadays, people on average are expected to live around 80 years, which seems quite an increase from around 68 years in 1952. A period of strong economic growth, accompanied by progress in the medical / health area seem to drive this positive trend.  
+
+# Overall
+
+Overall life expectancy trend is positive. Though, it seems that the variance in life expectancy in European countries in 1952 was smaller compared to all other continents (exc. Oceania), this still seems to hold at the end of the observation period. With African countries' life expectancies still being quite spread apart.

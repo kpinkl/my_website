@@ -1,5 +1,5 @@
 ---
-title: "blog14"
+title: "Finale please"
 output: html_document
 ---
 ---
@@ -7,12 +7,12 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: "Brexit"
+description: "Finale please"
 draft: false
 image: pic10.jpg
 keywords: ""
-slug: blog14
-title: Brexit
+slug: blog15
+title: Finale please
 ---
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
