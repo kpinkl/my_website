@@ -8,75 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Oct 2017 22:27:21 -0500</lastBuildDate><atom:link href="/blogs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Aliquam</title>
-      <link>/blogs/aliquam/</link>
-      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
-      
-      <guid>/blogs/aliquam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aliquam</title>
-      <link>/blogs/aliquam/</link>
-      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
-      
-      <guid>/blogs/aliquam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tempus</title>
-      <link>/blogs/tempus/</link>
-      <pubDate>Tue, 31 Oct 2017 22:26:13 -0500</pubDate>
-      
-      <guid>/blogs/tempus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Magna</title>
-      <link>/blogs/magna/</link>
-      <pubDate>Tue, 31 Oct 2017 22:26:09 -0500</pubDate>
-      
-      <guid>/blogs/magna/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>About me</title>
-      <link>/blogs/blogs/</link>
-      <pubDate>Tue, 31 Oct 2017 21:28:43 -0500</pubDate>
-      
-      <guid>/blogs/blogs/</guid>
-      <description>Key facts  Name: Konstantin Pinkl Age: 25 Nationality: German  Education  Training qualification: Industrial clerk at Vaillant GmbH A-levels: Berufliche Oberschule Schwandorf Bachelor: Bachelor of Science (Business Administration) at LMU Munich Master: Master of Science (Masters in Financial Analysis) at London Business School  Professional Experience  Deloitte GmbH: Intern | Financial Advisory, Sport Business Group UniCredit AG: Intern | Investment Banking, M&amp;amp;A, ECM Deutsche Bank AG: Summer Analyst | Investment Banking, M&amp;amp;A, ECM  </description>
-    </item>
-    
-    <item>
-      <title>Ipsum</title>
-      <link>/blogs/ipsum/</link>
-      <pubDate>Tue, 31 Oct 2017 21:28:43 -0500</pubDate>
-      
-      <guid>/blogs/ipsum/</guid>
-      <description>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</description>
-    </item>
-    
-    <item>
       <title>About me</title>
       <link>/blogs/about-me1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blogs/about-me1/</guid>
       <description>Key factsName: Konstantin PinklAge: 25Nationality: GermanEducationTraining qualification: Industrial clerk at Vaillant GmbHA-levels: Berufliche Oberschule SchwandorfBachelor: Bachelor of Science (Business Administration) at LMU MunichMaster: Master of Science (Masters in Financial Analysis) at London Business SchoolProfessional ExperienceDeloitte GmbH: Intern | Financial Advisory, Sport Business GroupUniCredit AG: Intern | Investment Banking, M&amp;amp;A, ECMDeutsche Bank AG: Summer Analyst | Investment Banking, M&amp;amp;A, ECM</description>
-    </item>
-    
-    <item>
-      <title>Blog 1</title>
-      <link>/blogs/blog6/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs/blog6/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -104,6 +41,16 @@
       
       <guid>/blogs/blog9/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Spirits consumption overview</title>
+      <link>/blogs/blog6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog6/</guid>
+      <description>.. beers, wine and other spirits!
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, tidy=FALSE, # display code as typedsize=&amp;quot;small&amp;quot;) # slightly smaller font for codeoptions(digits = 3)# default figure sizeknitr::opts_chunk$set(fig.width=6.75, fig.height=6.75,fig.align = &amp;quot;center&amp;quot;)Where Do People Drink The Most Beer, Wine And Spirits?library(fivethirtyeight)data(drinks) #Load in the dataset from the fivethirtyeight packageglimpse(drinks) #Glimpse() the dataset in order to preview the data entries themselves## Rows: 193## Columns: 5## $ country &amp;lt;chr&amp;gt; &amp;quot;Afghanistan&amp;quot;, &amp;quot;Albania&amp;quot;, &amp;quot;Algeria&amp;quot;, &amp;quot;.</description>
     </item>
     
   </channel>

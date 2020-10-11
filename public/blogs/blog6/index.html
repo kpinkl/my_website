@@ -8,7 +8,7 @@
 	<meta name="description" content="LBS MFA2021 student">
 	<meta name="author" content="Konstantin Pinkl">
 	<meta name="generator" content="Hugo 0.75.1" />
-	<title>Blog 1 &middot; Portfolio website for Konstantin Pinkl</title>
+	<title>Spirits consumption overview &middot; Portfolio website for Konstantin Pinkl</title>
 	<!-- Stylesheets -->
 	
 	<link rel="stylesheet" href="/css/main.css"/>
@@ -75,13 +75,417 @@
                     <section id="one">
                         <div class="inner">
                             <header class="major">
-                                <h1>Blog 1</h1>
+                                <h1>Spirits consumption overview</h1>
                             </header>
                             
                             
 
 
+<p>.. beers, wine and other spirits!</p>
+<pre class="r"><code>knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size=&quot;small&quot;)   # slightly smaller font for code
+options(digits = 3)
 
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = &quot;center&quot;
+)</code></pre>
+<div id="where-do-people-drink-the-most-beer-wine-and-spirits" class="section level1">
+<h1>Where Do People Drink The Most Beer, Wine And Spirits?</h1>
+<pre class="r"><code>library(fivethirtyeight)
+data(drinks) #Load in the dataset from the fivethirtyeight package</code></pre>
+<pre class="r"><code>glimpse(drinks) #Glimpse() the dataset in order to preview the data entries themselves</code></pre>
+<pre><code>## Rows: 193
+## Columns: 5
+## $ country                      &lt;chr&gt; &quot;Afghanistan&quot;, &quot;Albania&quot;, &quot;Algeria&quot;, &quot;...
+## $ beer_servings                &lt;int&gt; 0, 89, 25, 245, 217, 102, 193, 21, 261...
+## $ spirit_servings              &lt;int&gt; 0, 132, 0, 138, 57, 128, 25, 179, 72, ...
+## $ wine_servings                &lt;int&gt; 0, 54, 14, 312, 45, 45, 221, 11, 212, ...
+## $ total_litres_of_pure_alcohol &lt;dbl&gt; 0.0, 4.9, 0.7, 12.4, 5.9, 4.9, 8.3, 3....</code></pre>
+<pre class="r"><code>skim(drinks) # Use skim() to obtain all the necessary information (variable types, missingness, distribution)</code></pre>
+<table style='width: auto;'
+        class='table table-condensed'>
+<caption>
+(#tab:glimpse_skim_data)Data summary
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Name
+</td>
+<td style="text-align:left;">
+drinks
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of rows
+</td>
+<td style="text-align:left;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of columns
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+_______________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Column type frequency:
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+________________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Group variables
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+empty
+</th>
+<th style="text-align:right;">
+n_unique
+</th>
+<th style="text-align:right;">
+whitespace
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+country
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+p0
+</th>
+<th style="text-align:right;">
+p25
+</th>
+<th style="text-align:right;">
+p50
+</th>
+<th style="text-align:right;">
+p75
+</th>
+<th style="text-align:right;">
+p100
+</th>
+<th style="text-align:left;">
+hist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+beer_servings
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+106.16
+</td>
+<td style="text-align:right;">
+101.14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+76.0
+</td>
+<td style="text-align:right;">
+188.0
+</td>
+<td style="text-align:right;">
+376.0
+</td>
+<td style="text-align:left;">
+&lt;U+2587&gt;&lt;U+2583&gt;&lt;U+2582&gt;&lt;U+2582&gt;&lt;U+2581&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+spirit_servings
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+80.99
+</td>
+<td style="text-align:right;">
+88.28
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+56.0
+</td>
+<td style="text-align:right;">
+128.0
+</td>
+<td style="text-align:right;">
+438.0
+</td>
+<td style="text-align:left;">
+&lt;U+2587&gt;&lt;U+2583&gt;&lt;U+2582&gt;&lt;U+2581&gt;&lt;U+2581&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wine_servings
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+49.45
+</td>
+<td style="text-align:right;">
+79.70
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:right;">
+370.0
+</td>
+<td style="text-align:left;">
+&lt;U+2587&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;&lt;U+2581&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_litres_of_pure_alcohol
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4.72
+</td>
+<td style="text-align:right;">
+3.77
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+7.2
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:left;">
+&lt;U+2587&gt;&lt;U+2583&gt;&lt;U+2585&gt;&lt;U+2583&gt;&lt;U+2581&gt;
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
+
+beer &lt;- drinks %&gt;% 
+  select(country, beer_servings) %&gt;% 
+  arrange(desc(beer_servings))
+
+#Use again the pipe to select only the top 25 entries in the list created above
+
+top25_beer &lt;- beer %&gt;% 
+  
+  head(25)
+
+#Use ggplot() to plot only the top 25 entries summarised in top25_beer, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
+
+ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servings),) + geom_col(fill=&quot;blue&quot;) + labs(x=&quot;Country&quot;,y = &quot;Beer Servings Consumed Per Person&quot;, title = &quot;Top 25 Beer Consuming Countries&quot;) + theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
+<p><img src="/blogs/blog6_files/figure-html/beer_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
+
+wine &lt;- drinks %&gt;% 
+  select(country, wine_servings) %&gt;% 
+  arrange(desc(wine_servings))
+
+#Use again the pipe to select only the top 25 entries in the list created above
+
+top25_wine &lt;- wine %&gt;% 
+  
+  head(25)
+
+#Use ggplot() to plot only the top 25 entries summarised in top25_wine, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
+
+ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servings),) + geom_col(fill=&quot;red&quot;) + labs(x=&quot;Country&quot;,y = &quot;Wine Servings Consumed Per Person&quot;, title = &quot;Top 25 Wine Consuming Countries&quot;) + theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
+<p><img src="/blogs/blog6_files/figure-html/wine_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
+
+spirit &lt;- drinks %&gt;% 
+  select(country, spirit_servings) %&gt;% 
+  arrange(desc(spirit_servings))
+
+#Use again the pipe to select only the top 25 entries in the list created above
+
+top25_spirit &lt;- spirit %&gt;% 
+  
+  head(25)
+
+#Use ggplot() to plot only the top 25 entries summarised in top25_spirit, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
+
+ggplot(top25_spirit, aes(x = reorder(country, desc(spirit_servings)), y= spirit_servings),) + 
+  geom_col(fill=&quot;dark green&quot;) + 
+  labs(x=&quot;Country&quot;,y = &quot;Spirit Servings Consumed Per Person&quot;, title = &quot;Top 25 spirit Consuming Countries&quot;) +
+  theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
+<p><img src="/blogs/blog6_files/figure-html/spirit_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
 
                         </div>
                     </section>

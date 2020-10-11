@@ -98,8 +98,8 @@ disqusShortname = ""
       url = "blogs/about-me1"
 
     [[params.tiles.showcase]]
-      title = "Blog 1"
-      subtitle = "Blog 1 Description"
+      title = "Spirits consumption"
+      subtitle = "Find out which nations drinks the most ..."
       image = "pic02.jpg"
       url = "blogs/blog6"
 

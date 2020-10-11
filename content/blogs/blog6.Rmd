@@ -1,5 +1,5 @@
 ---
-title: "Blog 1"
+title: "Spirits consumption overview"
 output: html_document
 ---
 ---
@@ -7,10 +7,124 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: "Testograph descp"
+description: "Spirits consumption across the world"
 draft: false
 image: pic10.jpg
 keywords: ""
 slug: blog6
-title: Testograph
+title: Spirits consumption overview
 ---
+
+.. beers, wine and other spirits!
+
+```{r setup}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(kableExtra)
+library(ggrepel)
+library(patchwork)
+
+```
+  
+# Where Do People Drink The Most Beer, Wine And Spirits?
+```{r load_alcohol_data}
+library(fivethirtyeight)
+data(drinks) #Load in the dataset from the fivethirtyeight package
+```
+  
+```{r glimpse_skim_data}
+
+glimpse(drinks) #Glimpse() the dataset in order to preview the data entries themselves
+skim(drinks) # Use skim() to obtain all the necessary information (variable types, missingness, distribution)
+
+```
+
+```{r beer_plot}
+
+#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
+
+beer <- drinks %>% 
+  select(country, beer_servings) %>% 
+  arrange(desc(beer_servings))
+
+#Use again the pipe to select only the top 25 entries in the list created above
+
+top25_beer <- beer %>% 
+  
+  head(25)
+
+#Use ggplot() to plot only the top 25 entries summarised in top25_beer, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
+
+ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servings),) + geom_col(fill="blue") + labs(x="Country",y = "Beer Servings Consumed Per Person", title = "Top 25 Beer Consuming Countries") + theme(axis.text.x = element_text(angle=30, size=7))
+
+```
+
+```{r wine_plot}
+
+#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
+
+wine <- drinks %>% 
+  select(country, wine_servings) %>% 
+  arrange(desc(wine_servings))
+
+#Use again the pipe to select only the top 25 entries in the list created above
+
+top25_wine <- wine %>% 
+  
+  head(25)
+
+#Use ggplot() to plot only the top 25 entries summarised in top25_wine, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
+
+ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servings),) + geom_col(fill="red") + labs(x="Country",y = "Wine Servings Consumed Per Person", title = "Top 25 Wine Consuming Countries") + theme(axis.text.x = element_text(angle=30, size=7))
+
+
+```
+
+```{r spirit_plot}
+
+#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
+
+spirit <- drinks %>% 
+  select(country, spirit_servings) %>% 
+  arrange(desc(spirit_servings))
+
+#Use again the pipe to select only the top 25 entries in the list created above
+
+top25_spirit <- spirit %>% 
+  
+  head(25)
+
+#Use ggplot() to plot only the top 25 entries summarised in top25_spirit, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
+
+ggplot(top25_spirit, aes(x = reorder(country, desc(spirit_servings)), y= spirit_servings),) + 
+  geom_col(fill="dark green") + 
+  labs(x="Country",y = "Spirit Servings Consumed Per Person", title = "Top 25 spirit Consuming Countries") +
+  theme(axis.text.x = element_text(angle=30, size=7))
+
+```
