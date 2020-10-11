@@ -2,3 +2,15 @@
 title: "blog1"
 output: html_document
 ---
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: "Blog1"
+draft: false
+image: Kon-Art2018.jpg1
+keywords: ""
+slug: blogs
+title: Blog1
+---
