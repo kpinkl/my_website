@@ -1,5 +1,5 @@
 ---
-title: "Spirits consumption overview"
+title: "Worldwide spirits consumption analysis"
 output: html_document
 ---
 ---
@@ -16,6 +16,10 @@ title: Spirits consumption overview
 ---
 
 .. beers, wine and other spirits!
+
+## Approach
+
+ADD
 
 ```{r setup}
 knitr::opts_chunk$set(

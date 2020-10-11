@@ -98,15 +98,15 @@ disqusShortname = ""
       url = "blogs/about-me1"
 
     [[params.tiles.showcase]]
-      title = "Spirits consumption"
-      subtitle = "Find out which nations drinks the most ..."
-      image = "pic02.jpg"
+      title = "Find out which nations drinks the most ..."
+      subtitle = "Worldwide spirits consumption analysis"
+      image = "spirits.jpg"
       url = "blogs/blog6"
 
     [[params.tiles.showcase]]
-      title = "Blog 2"
-      subtitle = "Blog 2 Description"
-      image = "pic03.jpg"
+      title = "The heat is on!"
+      subtitle = "Climate change and temperature anomalies"
+      image = "climate.jpg"
       url = "blogs/blog7"
 
     [[params.tiles.showcase]]

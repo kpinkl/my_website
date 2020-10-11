@@ -37,15 +37,6 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Blog 2</title>
-      <link>/blogs/blog7/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs/blog7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Blog 3</title>
       <link>/blogs/blog8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -64,13 +55,23 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Spirits consumption overview</title>
+      <title>Climate change and temperature anomalies</title>
+      <link>/blogs/blog7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/blog7/</guid>
+      <description>Aproachweather &amp;lt;- read_csv(&amp;quot;https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv&amp;quot;, skip = 1, na = &amp;quot;***&amp;quot;)weather_selected &amp;lt;- select(weather, Year:Dec)weather_selected_long &amp;lt;- weather_selected %&amp;gt;% pivot_longer(cols = 2:13, #columns 2 to 13names_to = &amp;quot;Month&amp;quot;,values_to = &amp;quot;delta&amp;quot;)tidyweather &amp;lt;- weather_selected_long %&amp;gt;%mutate(date = ymd(paste(as.character(Year), Month, &amp;quot;1&amp;quot;)),month = month(date, label=TRUE),year = year(date))ggplot(tidyweather, aes(x=date, y = delta))+geom_point()+geom_smooth(color=&amp;quot;red&amp;quot;) +theme_bw() +labs (title = &amp;quot;Weather Anomalies&amp;quot;)Is the effect of increasing temperature more pronounced in some months?</description>
+    </item>
+    
+    <item>
+      <title>Worldwide spirits consumption analysis</title>
       <link>/blogs/blog6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blogs/blog6/</guid>
       <description>.. beers, wine and other spirits!
-knitr::opts_chunk$set(message = FALSE, warning = FALSE, tidy=FALSE, # display code as typedsize=&amp;quot;small&amp;quot;) # slightly smaller font for codeoptions(digits = 3)# default figure sizeknitr::opts_chunk$set(fig.width=6.75, fig.height=6.75,fig.align = &amp;quot;center&amp;quot;)Where Do People Drink The Most Beer, Wine And Spirits?library(fivethirtyeight)data(drinks) #Load in the dataset from the fivethirtyeight packageglimpse(drinks) #Glimpse() the dataset in order to preview the data entries themselves## Rows: 193## Columns: 5## $ country &amp;lt;chr&amp;gt; &amp;quot;Afghanistan&amp;quot;, &amp;quot;Albania&amp;quot;, &amp;quot;Algeria&amp;quot;, &amp;quot;.</description>
+ApproachADD
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, tidy=FALSE, # display code as typedsize=&amp;quot;small&amp;quot;) # slightly smaller font for codeoptions(digits = 3)# default figure sizeknitr::opts_chunk$set(fig.width=6.75, fig.height=6.75,fig.align = &amp;quot;center&amp;quot;)Where Do People Drink The Most Beer, Wine And Spirits?library(fivethirtyeight)data(drinks) #Load in the dataset from the fivethirtyeight packageglimpse(drinks) #Glimpse() the dataset in order to preview the data entries themselves## Rows: 193## Columns: 5## $ country &amp;lt;chr&amp;gt; &amp;quot;Afghanistan&amp;quot;, &amp;quot;Albania&amp;quot;, &amp;quot;Algeria&amp;quot;, &amp;quot;.</description>
     </item>
     
   </channel>
