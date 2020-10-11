@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="LBS MFA2021 student">
+	<meta name="author" content="Konstantin Pinkl">
+	<meta name="generator" content="Hugo 0.75.1" />
+	<title>London bikes &middot; Portfolio website for Konstantin Pinkl</title>
+	<!-- Stylesheets -->
+	
+	<link rel="stylesheet" href="/css/main.css"/>
+	
+	
+
+	
+
+	<!-- Custom Fonts -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	<![endif]-->
+</head>
+
+    <body>
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Forty</strong> <span>By HTML5 Up</span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+<!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/blogs">Blogs</a></li>
+            
+                <li><a href="/blogs/about-me1">About me</a></li>
+            
+
+        </ul>
+        <ul class="actions vertical">
+            
+                <li><a href="/blogs" class="button special fit">To begin</a></li>
+            
+            
+                <li><a href="/" class="button fit">Log In</a></li>
+            
+        </ul>
+    </nav>
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>London bikes</h1>
+                            </header>
+                            
+                            
+
+
+<div id="challenge-2-excess-rentals-in-tfl-bike-sharing" class="section level1">
+<h1>Challenge 2: Excess rentals in TfL bike sharing</h1>
+<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
+
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201011%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201011T200510Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=d3986a79c4367eabb971b3c6d18c42ff75e923901b06c1755223e641d61cfd7a&amp;X-Amz-SignedHeaders=host]
+##   Date: 2020-10-11 20:05
+##   Status: 200
+##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##   Size: 165 kB
+## &lt;ON DISK&gt;  C:\Users\kpink\AppData\Local\Temp\RtmpaW0m5H\file2bc0625721f2.xlsx</code></pre>
+<pre class="r"><code># Use read_excel to read it as dataframe
+bike0 &lt;- read_excel(bike.temp,
+                   sheet = &quot;Data&quot;,
+                   range = cell_cols(&quot;A:B&quot;))
+
+# change dates to get year, month, and week
+bike &lt;- bike0 %&gt;% 
+  clean_names() %&gt;% 
+  rename (bikes_hired = number_of_bicycle_hires) %&gt;% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))</code></pre>
+<div id="graph" class="section level2">
+<h2>1. Graph</h2>
+<p><img src="C:/Data Analytics for Finance Website/images/tfl_monthly.png" width="100%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>bike_mon &lt;- bike %&gt;%
+  filter(year &gt;= 2015) %&gt;%
+  group_by(year, month)%&gt;%
+  summarise(mean_hired.act=mean(bikes_hired))%&gt;% 
+  group_by(month) %&gt;%
+  mutate(mean_hired.exp=mean(mean_hired.act)) 
+
+
+  kbl(bike_mon, col.names=c(&quot;Year&quot;,&quot;Month&quot;,&quot;Mean Number of Bikes Hired Daily (Actual)&quot;, &quot;Mean Number of Bikes Hired Daily (Expected)&quot;)) %&gt;%
+  kable_styling()</code></pre>
+<pre class="r"><code>monthly_plot &lt;- ggplot(bike_mon,aes(x=month,group=1))+   
+  geom_line(aes(y=mean_hired.exp),color=&quot;blue&quot;,size=0.7) + 
+  geom_line(aes(y=mean_hired.act),color=&quot;black&quot;,size=0.3)+
+  
+ geom_ribbon(aes(x=month,ymin=mean_hired.exp,ymax=pmax(mean_hired.act,mean_hired.exp)),fill=&quot;green&quot;,alpha=0.2)+ 
+geom_ribbon(aes(x=month,ymin=pmin(mean_hired.act,mean_hired.exp),ymax=mean_hired.exp),fill=&quot;red&quot;,alpha=0.2) + 
+  
+facet_wrap(~year)+
+    theme_minimal() +
+  
+   theme(legend.position = &quot;none&quot;,
+         axis.title.y = element_text(size=rel(1)),
+         plot.title = element_text(size=rel(1.4)),
+         axis.text.x = element_text(size=rel(0.8),angle=0))+
+  
+  labs(y = &quot;Bike rentals&quot;,
+       x = NULL,
+       title = &quot;Monthly changes in TfL bike rentals&quot;,
+       subtitle = &quot;Change from monthly average shown in blue 
+and calculated between 2015-2019&quot;, caption=&quot;Source: TfL, London Data Store&quot;)
+
+monthly_plot</code></pre>
+<p><img src="/blogs/blog12_files/figure-html/monthly_changes_plot-1.png" width="960" /></p>
+</div>
+<div id="graph-1" class="section level2">
+<h2>2. Graph</h2>
+<p>The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.</p>
+<p><img src="C:/Data Analytics for Finance Website/images/tfl_weekly.png" width="100%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>bike_week &lt;- bike %&gt;%
+  filter(year &gt;=2015) %&gt;%
+  group_by(year,week)%&gt;% 
+  summarise(mean_hired.act=mean(bikes_hired))%&gt;%
+  group_by(week) %&gt;%
+  mutate(mean_hired.exp=mean(mean_hired.act)) 
+
+bike_week$mean_hired.exc = ((bike_week$mean_hired.act-bike_week$mean_hired.exp)/bike_week$mean_hired.exp)
+
+  kbl(bike_week, col.names=c(&quot;Year&quot;,&quot;Week&quot;,&quot;Mean Number of Bikes Hired Daily (Actual)&quot;, &quot;Mean Number of Bikes Hired Daily (Expected)&quot;, &quot;Deviation of Actual Bikes Hired from Expected Bikes Hired (Proportion)&quot;)) %&gt;%
+  kable_styling()</code></pre>
+<pre class="r"><code>weekly_plot &lt;- bike_week %&gt;%
+  ggplot(aes(x=week,group=1))+ 
+  geom_line(aes(y=mean_hired.exc),size=0.3) + 
+  
+  geom_tile(aes(x = 19.5, y = 0, width = 13, height = 1.2), fill = &#39;grey&#39;, alpha = 0.01) +
+  geom_tile(aes(x = 46, y = 0, width = 13, height = 1.2), fill = &#39;grey&#39;, alpha = 0.01) +  
+  
+  geom_ribbon(aes(x=week,ymin=0,ymax=pmax(bike_week$mean_hired.exc,0)),fill=&quot;green&quot;,alpha=0.3)+
+  geom_ribbon(aes(x=week,ymin=pmin(bike_week$mean_hired.exc,0),ymax=0),fill=&quot;red&quot;,alpha=0.3) +
+  
+  facet_wrap(~year) +
+  scale_x_continuous(limits = c(0, 53),breaks=c(13,26,39,53)) + 
+  scale_y_continuous(labels = label_percent(),limits = c(-0.6,0.6),breaks=c(-0.6,-0.3,0,0.3,0.6)) +
+  theme_minimal() +
+
+  theme(legend.position = &quot;none&quot;,
+        axis.title.y = element_text(size=rel(1)),
+        plot.title = element_text(size=rel(1.4)),
+        axis.text.x = element_text(size=rel(0.8),angle=0)) +
+  labs(title = &#39;Weekly change in TfL bike rentals&#39;,
+       y = &#39;&#39;,
+       subtitle = &#39;% change from weekly averages
+calculated between 2015-2019&#39;, caption=&quot;Source: TfL, London Data Store&quot;) +
+  
+  geom_rug(data = subset(bike_week,mean_hired.exc &gt; 0), color = &#39;green&#39;, sides=&quot;b&quot;, size = 0.3) +
+  # if change rate &lt; 0 , rug = red
+  geom_rug(data = subset(bike_week, mean_hired.exc&lt;0), color = &#39;red&#39;, sides=&quot;b&quot;, size = 0.3) 
+ 
+weekly_plot</code></pre>
+<p><img src="/blogs/blog12_files/figure-html/weekly_change_percentage_plot-1.png" width="960" /></p>
+</div>
+</div>
+
+                        </div>
+                    </section>
+            <!-- Disqus Inject -->
+                
+            </div>
+            
+        <!-- Footer -->
+            
+                <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                    <li><a href="https://github.com/kpinkl/my_website" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                    <li><a href="https://www.linkedin.com/in/konstantin-p-307457161/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Company Name</li>
+                
+                <li>Design:  <a href="https://www.html5up.net">HTML5 UP</a></li>
+                
+            </ul>
+        </div>
+    </footer>
+
+            
+        </div>
+
+    <!-- Scripts -->
+        <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+
+    
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    
+
+    
+
+    </body>
+</html>
