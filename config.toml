@@ -116,9 +116,9 @@ disqusShortname = ""
       url = "blogs/blog12"
 
     [[params.tiles.showcase]]
-      title = "How long do you expect to live?"
-      subtitle = "Global life expectancy"
-      image = "usa.jpg"
+      title = "How life expectancy changed over the years"
+      subtitle = "Global life expectancy development"
+      image = "life.jpg"
       url = "blogs/blog15"
 
     #[[params.tiles.showcase]]

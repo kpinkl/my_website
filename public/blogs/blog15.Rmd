@@ -1,5 +1,5 @@
 ---
-title: "Finale please"
+title: "Global life expectancy development"
 output: html_document
 ---
 ---
@@ -7,12 +7,12 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: "Finale please"
+description: "Global life expectancy development"
 draft: false
-image: pic10.jpg
+image: life.jpg
 keywords: ""
 slug: blog15
-title: Finale please
+title: Global life expectancy development
 ---
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
@@ -42,16 +42,6 @@ continent_data <- gapminder %>%
 
 First, create a plot of life expectancy over time for the single country you chose. You should use  `geom_point()` to see the actual data points and `geom_smooth(se = FALSE)`  to plot the underlying trendlines. You need to remove the comments **#** from the lines below for your code to run.
 
-```{r, lifeExp_one_country}
-plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
-geom_point() +
-geom_smooth(se = FALSE)+
-NULL 
-
-plot1
-```
-
-Next we need to add a title. Create a new plot, or extend plot1, using the `labs()` function to add an informative title to the plot.
 
 ```{r, lifeExp_one_country_with_label}
   plot2 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
@@ -89,7 +79,6 @@ Finally, using the original `gapminder` data, produce a life expectancy over tim
 
 Given these trends, what can you say about life expectancy since 1952? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
 
-> Type your answer after this blockquote.
 
 # Germany
 

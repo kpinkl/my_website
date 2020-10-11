@@ -1,5 +1,5 @@
 ---
-title: "Finale please"
+title: "Global life expectancy development"
 output: html_document
 ---
 
@@ -46,15 +46,6 @@ output: html_document
 continent_data &lt;- gapminder %&gt;% 
             filter(continent == &quot;Europe&quot;)</code></pre>
 <p>First, create a plot of life expectancy over time for the single country you chose. You should use <code>geom_point()</code> to see the actual data points and <code>geom_smooth(se = FALSE)</code> to plot the underlying trendlines. You need to remove the comments <strong>#</strong> from the lines below for your code to run.</p>
-<pre class="r"><code>plot1 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
-geom_point() +
-geom_smooth(se = FALSE)+
-NULL 
-
-plot1</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/blogs/blog15_files/figure-html/lifeExp_one_country-1.png" width="672" /></p>
-<p>Next we need to add a title. Create a new plot, or extend plot1, using the <code>labs()</code> function to add an informative title to the plot.</p>
 <pre class="r"><code>  plot2 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE) +
@@ -84,9 +75,6 @@ print(plot2)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/blog15_files/figure-html/lifeExp_facet_by_continent-1.png" width="672" /></p>
 <p>Given these trends, what can you say about life expectancy since 1952? Again, don’t just say what’s happening in the graph. Tell some sort of story and speculate about the differences in the patterns.</p>
-<blockquote>
-<p>Type your answer after this blockquote.</p>
-</blockquote>
 <div id="germany" class="section level1">
 <h1>Germany</h1>
 <p>Life expectancy in Germany has been almost linearly increasing since 1952. Nowadays, people on average are expected to live around 80 years, which seems quite an increase from around 68 years in 1952. A period of strong economic growth, accompanied by progress in the medical / health area seem to drive this positive trend.</p>
