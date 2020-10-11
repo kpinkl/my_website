@@ -53,7 +53,7 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "About me"
-      url = "blogs/About_me"
+      url = "blogs/about-me"
 
    # [[params.navigation.links]]
     #  name = "Elements"
@@ -95,7 +95,7 @@ disqusShortname = ""
       title = "About me"
       subtitle = "Konstantin Pinkl, LBS MFA2021"
       image = "Kon-Art2018.jpg"
-      url = "blogs/about-me"
+      url = "blogs/about-me1"
 
     [[params.tiles.showcase]]
       title = "Blog 2"
@@ -107,7 +107,7 @@ disqusShortname = ""
       title = "Magna"
       subtitle = "Lorem Etiam Nullam"
       image = "pic03.jpg"
-      url = "blogs/blog2"
+      url = "blogs/Magna"
 
     [[params.tiles.showcase]]
       title = "Ipsum"
