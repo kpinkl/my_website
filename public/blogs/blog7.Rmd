@@ -140,8 +140,6 @@ ggplot(comparison, aes(x=delta, fill=interval))+
 
 ```
 
-So far, we have been working with monthly anomalies. However, we might be interested in average annual anomalies. We can do this by using `group_by()` and `summarise()`, followed by a scatter plot to display the result. 
-
 ```{r averaging}
 
 #creating yearly averages

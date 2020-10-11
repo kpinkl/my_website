@@ -127,7 +127,6 @@ ggplot(tidyweather, aes(x=date, y = delta))+
     y     = &quot;Density&quot;         #changing y-axis label to sentence case
   )</code></pre>
 <p><img src="/blogs/blog7_files/figure-html/density_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
-<p>So far, we have been working with monthly anomalies. However, we might be interested in average annual anomalies. We can do this by using <code>group_by()</code> and <code>summarise()</code>, followed by a scatter plot to display the result.</p>
 <pre class="r"><code>#creating yearly averages
 average_annual_anomaly &lt;- tidyweather %&gt;% 
   group_by(Year) %&gt;%   #grouping data by Year
