@@ -9,7 +9,7 @@ categories:
 date: "2017-10-31T21:28:43-05:00"
 description: "Social media analysis"
 draft: false
-image: pic10.jpg
+image: media.jpg
 keywords: ""
 slug: blog8
 title: Social media analysis

@@ -110,15 +110,15 @@ disqusShortname = ""
       url = "blogs/blog7"
 
     [[params.tiles.showcase]]
-      title = "Your favourite website revisited"
+      title = "Can you relate? Social media usage examined!"
       subtitle = "Social media analysis"
       image = "media.jpg"
       url = "blogs/blog8"
 
     [[params.tiles.showcase]]
-      title = "Blog 4"
-      subtitle = "Blog 4 Description"
-      image = "pic05.jpg"
+      title = "Another four years?"
+      subtitle = "US election"
+      image = "usa.jpg"
       url = "blogs/blog9"
 
     #[[params.tiles.showcase]]
