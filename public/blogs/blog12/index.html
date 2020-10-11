@@ -8,7 +8,7 @@
 	<meta name="description" content="LBS MFA2021 student">
 	<meta name="author" content="Konstantin Pinkl">
 	<meta name="generator" content="Hugo 0.75.1" />
-	<title>London bikes &middot; Portfolio website for Konstantin Pinkl</title>
+	<title>TfL bike analysis &middot; Portfolio website for Konstantin Pinkl</title>
 	<!-- Stylesheets -->
 	
 	<link rel="stylesheet" href="/css/main.css"/>
@@ -75,14 +75,14 @@
                     <section id="one">
                         <div class="inner">
                             <header class="major">
-                                <h1>London bikes</h1>
+                                <h1>TfL bike analysis</h1>
                             </header>
                             
                             
 
 
-<div id="challenge-2-excess-rentals-in-tfl-bike-sharing" class="section level1">
-<h1>Challenge 2: Excess rentals in TfL bike sharing</h1>
+<div id="approach" class="section level2">
+<h2>Approach</h2>
 <pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
 
 # Download TFL data to temporary file
@@ -105,6 +105,7 @@ bike &lt;- bike0 %&gt;%
   mutate (year = year(day),
           month = lubridate::month(day, label = TRUE),
           week = isoweek(day))</code></pre>
+</div>
 <div id="graph" class="section level2">
 <h2>1. Graph</h2>
 <p><img src="C:/Data Analytics for Finance Website/images/tfl_monthly.png" width="100%" style="display: block; margin: auto;" /></p>
@@ -187,7 +188,6 @@ calculated between 2015-2019&#39;, caption=&quot;Source: TfL, London Data Store&
  
 weekly_plot</code></pre>
 <p><img src="/blogs/blog12_files/figure-html/weekly_change_percentage_plot-1.png" width="960" /></p>
-</div>
 </div>
 
                         </div>
