@@ -1,0 +1,16 @@
+---
+title: "Blog 2"
+output: html_document
+---
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: "Testograph descp"
+draft: false
+image: pic10.jpg
+keywords: ""
+slug: blog7
+title: Testograph
+---

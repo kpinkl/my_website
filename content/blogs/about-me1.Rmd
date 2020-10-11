@@ -11,7 +11,7 @@ description: "About Konstantin Pinkl"
 draft: false
 image: Kon-Art2018.jpg
 keywords: ""
-slug: blogs
+slug: about-me1
 title: About me
 ---
 

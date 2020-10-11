@@ -53,7 +53,7 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "About me"
-      url = "blogs/about-me"
+      url = "blogs/about-me1"
 
    # [[params.navigation.links]]
     #  name = "Elements"
@@ -101,25 +101,25 @@ disqusShortname = ""
       title = "Blog 1"
       subtitle = "Blog 1 Description"
       image = "pic02.jpg"
-      url = "blogs/blog1"
+      url = "blogs/blog6"
 
     [[params.tiles.showcase]]
       title = "Blog 2"
       subtitle = "Blog 2 Description"
       image = "pic03.jpg"
-      url = "blogs/blog2"
+      url = "blogs/blog7"
 
     [[params.tiles.showcase]]
       title = "Blog 3"
       subtitle = "Blog 3 Description"
       image = "pic04.jpg"
-      url = "blogs/blog3"
+      url = "blogs/blog8"
 
     [[params.tiles.showcase]]
       title = "Blog 4"
       subtitle = "Blog 4 Description"
       image = "pic05.jpg"
-      url = "blogs/blog4"
+      url = "blogs/blog9"
 
     #[[params.tiles.showcase]]
      # title = "Etiam"
