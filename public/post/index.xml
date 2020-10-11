@@ -18,5 +18,14 @@ You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
+    <item>
+      <title>About me</title>
+      <link>/post/about-me1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/about-me1/</guid>
+      <description>Key factsName: Konstantin PinklAge: 25Nationality: GermanEducationTraining qualification: Industrial clerk at Vaillant GmbHA-levels: Berufliche Oberschule SchwandorfBachelor: Bachelor of Science (Business Administration) at LMU MunichMaster: Master of Science (Masters in Financial Analysis) at London Business SchoolProfessional ExperienceDeloitte GmbH: Intern | Financial Advisory, Sport Business GroupUniCredit AG: Intern | Investment Banking, M&amp;amp;A, ECMDeutsche Bank AG: Summer Analyst | Investment Banking, M&amp;amp;A, ECM</description>
+    </item>
+    
   </channel>
 </rss>
