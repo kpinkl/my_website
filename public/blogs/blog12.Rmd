@@ -9,7 +9,7 @@ categories:
 date: "2017-10-31T21:28:43-05:00"
 description: "TfL bike analysis"
 draft: false
-image: pic10.jpg
+image: bike.jpg
 keywords: ""
 slug: blog12
 title: TfL bike analysis
@@ -50,20 +50,20 @@ library(kableExtra)
 library(scales)
 ```
 
-## Approach
+## Loading data and setup
 
 ```{r, get_tfl_data, cache=TRUE}
 url <- "https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx"
 
-# Download TFL data to temporary file
+# I download the TFL data to temporary file
 httr::GET(url, write_disk(bike.temp <- tempfile(fileext = ".xlsx")))
 
-# Use read_excel to read it as dataframe
+# I use read_excel to read it as dataframe
 bike0 <- read_excel(bike.temp,
                    sheet = "Data",
                    range = cell_cols("A:B"))
 
-# change dates to get year, month, and week
+# I change dates to get year, month, and week
 bike <- bike0 %>% 
   clean_names() %>% 
   rename (bikes_hired = number_of_bicycle_hires) %>% 
@@ -72,13 +72,7 @@ bike <- bike0 %>%
           week = isoweek(day))
 ```
 
-## 1. Graph
-
-```{r tfl_absolute_monthly_change2, echo=FALSE, out.width="100%"}
-
-knitr::include_graphics(here::here("images", "tfl_monthly.png"), error = FALSE)
-
-```
+## Exploring the monthly changes in Tfl bike rentals
 
 ```{r monthly_changes, echo=TRUE, results='hide'}
 
@@ -94,7 +88,6 @@ bike_mon <- bike %>%
   kable_styling()
 
 ```
-
 
 ```{r monthly_changes_plot, fig.height=5, fig.width=10, fig.align="centre"}
 
@@ -115,24 +108,15 @@ facet_wrap(~year)+
   
   labs(y = "Bike rentals",
        x = NULL,
-       title = "Monthly changes in TfL bike rentals",
-       subtitle = "Change from monthly average shown in blue 
-and calculated between 2015-2019", caption="Source: TfL, London Data Store")
+       title = "2020 presents major deviation form mean due to COVID-19 pandemic",
+       subtitle = "Monthly changes from average (blue) in TfL bike rentals 2015 - 2020 YTD",
+       caption="Source: TfL, London Data Store")
 
 monthly_plot
 
-
 ```
 
-## 2. Graph
-
-The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.
-
-```{r tfl_percent_change2, echo=FALSE, out.width="100%"}
-
-knitr::include_graphics(here::here("images", "tfl_weekly.png"), error = FALSE)
-
-```
+## Exploring the weekly changes in Tfl bike rentals
 
 ```{r weekly_change_percentage, echo=TRUE, results='hide'}
 
@@ -171,10 +155,10 @@ weekly_plot <- bike_week %>%
         axis.title.y = element_text(size=rel(1)),
         plot.title = element_text(size=rel(1.4)),
         axis.text.x = element_text(size=rel(0.8),angle=0)) +
-  labs(title = 'Weekly change in TfL bike rentals',
+  labs(title = 'Weekly bike rental figures rebound strongly after lockdowns',
        y = '',
-       subtitle = '% change from weekly averages
-calculated between 2015-2019', caption="Source: TfL, London Data Store") +
+       subtitle = 'Weekly changes from average in TfL bike rentals',
+       caption="Source: TfL, London Data Store") +
   
   geom_rug(data = subset(bike_week,mean_hired.exc > 0), color = 'green', sides="b", size = 0.3) +
   # if change rate < 0 , rug = red

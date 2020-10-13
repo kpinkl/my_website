@@ -81,24 +81,24 @@
                             
 
 
-<div id="approach" class="section level2">
-<h2>Approach</h2>
+<div id="loading-data-and-setup" class="section level2">
+<h2>Loading data and setup</h2>
 <pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
 
-# Download TFL data to temporary file
+# I download the TFL data to temporary file
 httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
-<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201011%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201011T200510Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=d3986a79c4367eabb971b3c6d18c42ff75e923901b06c1755223e641d61cfd7a&amp;X-Amz-SignedHeaders=host]
-##   Date: 2020-10-11 20:05
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201013%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201013T125238Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=fda00b0aaeaec5f0cfb93f3c1744dd3840c8756d79fd7be8d69b95778fe6c981&amp;X-Amz-SignedHeaders=host]
+##   Date: 2020-10-13 12:52
 ##   Status: 200
 ##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 ##   Size: 165 kB
-## &lt;ON DISK&gt;  C:\Users\kpink\AppData\Local\Temp\RtmpaW0m5H\file2bc0625721f2.xlsx</code></pre>
-<pre class="r"><code># Use read_excel to read it as dataframe
+## &lt;ON DISK&gt;  C:\Users\kpink\AppData\Local\Temp\Rtmp4CYwDi\file3be864b3269c.xlsx</code></pre>
+<pre class="r"><code># I use read_excel to read it as dataframe
 bike0 &lt;- read_excel(bike.temp,
                    sheet = &quot;Data&quot;,
                    range = cell_cols(&quot;A:B&quot;))
 
-# change dates to get year, month, and week
+# I change dates to get year, month, and week
 bike &lt;- bike0 %&gt;% 
   clean_names() %&gt;% 
   rename (bikes_hired = number_of_bicycle_hires) %&gt;% 
@@ -106,9 +106,8 @@ bike &lt;- bike0 %&gt;%
           month = lubridate::month(day, label = TRUE),
           week = isoweek(day))</code></pre>
 </div>
-<div id="graph" class="section level2">
-<h2>1. Graph</h2>
-<p><img src="C:/Data Analytics for Finance Website/images/tfl_monthly.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="exploring-the-monthly-changes-in-tfl-bike-rentals" class="section level2">
+<h2>Exploring the monthly changes in Tfl bike rentals</h2>
 <pre class="r"><code>bike_mon &lt;- bike %&gt;%
   filter(year &gt;= 2015) %&gt;%
   group_by(year, month)%&gt;%
@@ -136,17 +135,15 @@ facet_wrap(~year)+
   
   labs(y = &quot;Bike rentals&quot;,
        x = NULL,
-       title = &quot;Monthly changes in TfL bike rentals&quot;,
-       subtitle = &quot;Change from monthly average shown in blue 
-and calculated between 2015-2019&quot;, caption=&quot;Source: TfL, London Data Store&quot;)
+       title = &quot;2020 presents major deviation form mean due to COVID-19 pandemic&quot;,
+       subtitle = &quot;Monthly changes from average (blue) in TfL bike rentals 2015 - 2020 YTD&quot;,
+       caption=&quot;Source: TfL, London Data Store&quot;)
 
 monthly_plot</code></pre>
 <p><img src="/blogs/blog12_files/figure-html/monthly_changes_plot-1.png" width="960" /></p>
 </div>
-<div id="graph-1" class="section level2">
-<h2>2. Graph</h2>
-<p>The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.</p>
-<p><img src="C:/Data Analytics for Finance Website/images/tfl_weekly.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="exploring-the-weekly-changes-in-tfl-bike-rentals" class="section level2">
+<h2>Exploring the weekly changes in Tfl bike rentals</h2>
 <pre class="r"><code>bike_week &lt;- bike %&gt;%
   filter(year &gt;=2015) %&gt;%
   group_by(year,week)%&gt;% 
@@ -177,10 +174,10 @@ bike_week$mean_hired.exc = ((bike_week$mean_hired.act-bike_week$mean_hired.exp)/
         axis.title.y = element_text(size=rel(1)),
         plot.title = element_text(size=rel(1.4)),
         axis.text.x = element_text(size=rel(0.8),angle=0)) +
-  labs(title = &#39;Weekly change in TfL bike rentals&#39;,
+  labs(title = &#39;Weekly bike rental figures rebound strongly after lockdowns&#39;,
        y = &#39;&#39;,
-       subtitle = &#39;% change from weekly averages
-calculated between 2015-2019&#39;, caption=&quot;Source: TfL, London Data Store&quot;) +
+       subtitle = &#39;Weekly changes from average in TfL bike rentals&#39;,
+       caption=&quot;Source: TfL, London Data Store&quot;) +
   
   geom_rug(data = subset(bike_week,mean_hired.exc &gt; 0), color = &#39;green&#39;, sides=&quot;b&quot;, size = 0.3) +
   # if change rate &lt; 0 , rug = red
