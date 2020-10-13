@@ -122,9 +122,9 @@ continent_data &lt;- gapminder %&gt;%
 <pre class="r"><code>  plot2 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE) +
-  labs(subtitle = &quot;Steady increse in life expectancy since the 1950s&quot;,
-       title = &quot;Life expectancy development in Germany 1950 - 2020&quot;,
-        sx = &quot;Year&quot;,
+  labs(title = &quot;Steady increse in life expectancy since the 1950s&quot;,
+       subtitle = &quot;Life expectancy development in Germany 1950 - 2020&quot;,
+        x = &quot;Year&quot;,
         y = &quot;Life Expectancy&quot;) +
 NULL
 
@@ -135,12 +135,20 @@ print(plot2)</code></pre>
 <pre class="r"><code>ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
+    labs(title = &quot;Life expectancy development in EUrope 1950 - 2020 by country&quot;,
+         subtitle = &quot;Steady increase in life expectancy across all continents&quot;,
+         x = &quot;Year&quot;,
+         y = &quot;Life Expectancy&quot;)+
     NULL</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/blog15_files/figure-html/lifeExp_one_continent-1.png" width="672" /></p>
 <pre class="r"><code> ggplot(data = gapminder , mapping = aes(x = year  , y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
+    labs(title = &quot;Life expectancy development 1950 - 2020 by continent&quot;,
+         subtitle = &quot;Steady increase in life expectancy across all continents&quot;,
+         x = &quot;Year&quot;,
+         y = &quot;Life Expectancy&quot;)+
     facet_wrap(~continent) +
     theme(legend.position=&quot;none&quot;) + 
     NULL</code></pre>

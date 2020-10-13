@@ -40,9 +40,9 @@ continent_data <- gapminder %>%
   plot2 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE) +
-  labs(subtitle = "Steady increse in life expectancy since the 1950s",
-       title = "Life expectancy development in Germany 1950 - 2020",
-        sx = "Year",
+  labs(title = "Steady increse in life expectancy since the 1950s",
+       subtitle = "Life expectancy development in Germany 1950 - 2020",
+        x = "Year",
         y = "Life Expectancy") +
 NULL
 
@@ -54,6 +54,10 @@ print(plot2)
 ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
+    labs(title = "Life expectancy development in EUrope 1950 - 2020 by country",
+         subtitle = "Steady increase in life expectancy across all continents",
+         x = "Year",
+         y = "Life Expectancy")+
     NULL
 ```
 
@@ -61,6 +65,10 @@ ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= co
  ggplot(data = gapminder , mapping = aes(x = year  , y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
+    labs(title = "Life expectancy development 1950 - 2020 by continent",
+         subtitle = "Steady increase in life expectancy across all continents",
+         x = "Year",
+         y = "Life Expectancy")+
     facet_wrap(~continent) +
     theme(legend.position="none") + 
     NULL

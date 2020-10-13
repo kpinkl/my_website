@@ -54,7 +54,7 @@ print(plot2)
 ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
-    labs(title = "Life expectancy development in EUrope 1950 - 2020 by country",
+    labs(title = "Life expectancy development in Europe 1950 - 2020 by country",
          subtitle = "Steady increase in life expectancy across all continents",
          x = "Year",
          y = "Life Expectancy")+
@@ -68,7 +68,7 @@ ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= co
     labs(title = "Life expectancy development 1950 - 2020 by continent",
          subtitle = "Steady increase in life expectancy across all continents",
          x = "Year",
-         y = "Life Expectancy")
+         y = "Life Expectancy")+
     facet_wrap(~continent) +
     theme(legend.position="none") + 
     NULL
