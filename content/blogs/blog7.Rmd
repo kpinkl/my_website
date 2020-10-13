@@ -50,8 +50,6 @@ library(kableExtra)
 library(scales)
 ```
 
-## Aproach
-
 ```{r weather_data, cache=TRUE}
 
 weather <- 
@@ -85,12 +83,14 @@ ggplot(tidyweather, aes(x=date, y = delta))+
   geom_smooth(color="red") +
   theme_bw() +
   labs (
-    title = "Weather Anomalies"
-  )
+    title = "Continous increase in weather anomalies over the last decade",
+    subtitle = "Weather Anomalies by year",
+    x = "Year",
+    y = "Delta")
 
 ```
 
-Is the effect of increasing temperature more pronounced in some months? 
+## Does the effect of increasing temperature vary by months? 
 
 ```{r facet_wrap, echo=FALSE}
 
@@ -104,11 +104,10 @@ ggplot(tidyweather, aes(x=date, y = delta))+
   geom_smooth(color="red") +
   theme_bw() +
   labs (
-    title = "Weather Anomalies by Month"
-  ) + 
+    title = "Weather anomalies by month over the last decade",
+    x = "Year",
+    y = "Delta") + 
   facet_wrap(~month)
-
-
 
 ```
 
@@ -133,10 +132,10 @@ comparison <- tidyweather %>%
 ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
   theme_bw() +                #theme
-  labs (
-    title = "Density Plot for Monthly Temperature Anomalies",
-    y     = "Density"         #changing y-axis label to sentence case
-  )
+  labs (title = "Last 40 years show strongest Delta",
+    subtitle = "Density Plot for Monthly Temperature Anomalies",
+    x = "Delta",
+    y = "Density")         #changing y-axis label to sentence case
 
 ```
 
@@ -160,7 +159,7 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
   #change to theme_bw() to have white background + black frame around plot
   theme_bw() +
   labs (
-    title = "Average Yearly Anomaly",
+    title = "Average Yearly Weather Anomaly",
     y     = "Average Annual Delta"
   )                         
 
@@ -168,7 +167,7 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
 ```
 
 
-## Confidence Interval for `delta`
+## 95% confidence interval for `delta` variable
 
 
 ```{r, calculate_CI_using_formula}

@@ -7,8 +7,6 @@ output: html_document
 <link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
 
-<div id="aproach" class="section level2">
-<h2>Aproach</h2>
 <pre class="r"><code>weather &lt;- 
   read_csv(&quot;https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv&quot;, 
            skip = 1, 
@@ -28,10 +26,13 @@ ggplot(tidyweather, aes(x=date, y = delta))+
   geom_smooth(color=&quot;red&quot;) +
   theme_bw() +
   labs (
-    title = &quot;Weather Anomalies&quot;
-  )</code></pre>
+    title = &quot;Continous increase in weather anomalies over the last decade&quot;,
+    subtitle = &quot;Weather Anomalies by year&quot;,
+    x = &quot;Year&quot;,
+    y = &quot;Delta&quot;)</code></pre>
 <p><img src="/blogs/blog7_files/figure-html/scatter_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
-<p>Is the effect of increasing temperature more pronounced in some months?</p>
+<div id="does-the-effect-of-increasing-temperature-vary-by-months" class="section level2">
+<h2>Does the effect of increasing temperature vary by months?</h2>
 <p><img src="/blogs/blog7_files/figure-html/facet_wrap-1.png" width="648" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>comparison &lt;- tidyweather %&gt;% 
   filter(Year&gt;= 1881) %&gt;%     #remove years prior to 1881
@@ -46,10 +47,10 @@ ggplot(tidyweather, aes(x=date, y = delta))+
 <pre class="r"><code>ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
   theme_bw() +                #theme
-  labs (
-    title = &quot;Density Plot for Monthly Temperature Anomalies&quot;,
-    y     = &quot;Density&quot;         #changing y-axis label to sentence case
-  )</code></pre>
+  labs (title = &quot;Last 40 years show strongest Delta&quot;,
+    subtitle = &quot;Density Plot for Monthly Temperature Anomalies&quot;,
+    x = &quot;Delta&quot;,
+    y = &quot;Density&quot;)         #changing y-axis label to sentence case</code></pre>
 <p><img src="/blogs/blog7_files/figure-html/density_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>#creating yearly averages
 average_annual_anomaly &lt;- tidyweather %&gt;% 
@@ -69,13 +70,13 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
   #change to theme_bw() to have white background + black frame around plot
   theme_bw() +
   labs (
-    title = &quot;Average Yearly Anomaly&quot;,
+    title = &quot;Average Yearly Weather Anomaly&quot;,
     y     = &quot;Average Annual Delta&quot;
   )                         </code></pre>
 <p><img src="/blogs/blog7_files/figure-html/averaging-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
-<div id="confidence-interval-for-delta" class="section level2">
-<h2>Confidence Interval for <code>delta</code></h2>
+<div id="confidence-interval-for-delta-variable" class="section level2">
+<h2>Confidence Interval for <code>delta</code> variable</h2>
 <pre class="r"><code>formula_ci &lt;- comparison %&gt;% 
   filter(interval== &quot;2011-present&quot;) %&gt;% # choose the interval 2011-present
     filter(!is.na(delta)) %&gt;% 
