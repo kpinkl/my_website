@@ -53,6 +53,7 @@ NULL
 
 print(plot2)
 ```
+
 ### Commentary
 
 Life expectancy in Germany has been almost linearly increasing since 1952. Nowadays, people on average are expected to live around 80 years, which seems quite an increase from around 68 years in 1952. A period of strong economic growth, accompanied by progress in the medical / health area seem to drive this positive trend.  
