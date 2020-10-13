@@ -15,8 +15,9 @@ slug: blog6
 title: Spirits consumption overview
 ---
 
-## .. beers, wine and other spirits!
+# ... beers, wine and other spirits!
 
+## Load and setup
 
 ```{r setup}
 knitr::opts_chunk$set(
@@ -67,6 +68,8 @@ skim(drinks) # Use skim() to obtain all the necessary information (variable type
 
 ```
 
+## Beer
+
 ```{r beer_plot}
 
 #Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
@@ -92,6 +95,8 @@ ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servin
   theme(axis.text.x = element_text(angle=30, size=7))
 
 ```
+
+## Wine
 
 ```{r wine_plot}
 
@@ -119,6 +124,8 @@ ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servin
 
 
 ```
+
+## Spirits
 
 ```{r spirit_plot}
 

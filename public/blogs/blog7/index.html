@@ -83,6 +83,8 @@
 <link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
 
+<div id="load-and-setup" class="section level2">
+<h2>Load and setup</h2>
 <pre class="r"><code>weather &lt;- 
   read_csv(&quot;https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv&quot;, 
            skip = 1, 
@@ -92,6 +94,9 @@ weather_selected_long &lt;- weather_selected %&gt;%
     pivot_longer(cols = 2:13, #columns 2 to 13
                names_to = &quot;Month&quot;,
                values_to = &quot;delta&quot;)</code></pre>
+</div>
+<div id="weather-anomalies-by-year" class="section level2">
+<h2>Weather anomalies by year</h2>
 <pre class="r"><code>tidyweather &lt;- weather_selected_long %&gt;%
   mutate(date = ymd(paste(as.character(Year), Month, &quot;1&quot;)),
          month = month(date, label=TRUE),
@@ -107,8 +112,9 @@ ggplot(tidyweather, aes(x=date, y = delta))+
     x = &quot;Year&quot;,
     y = &quot;Delta&quot;)</code></pre>
 <p><img src="/blogs/blog7_files/figure-html/scatter_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
-<div id="does-the-effect-of-increasing-temperature-vary-by-months" class="section level2">
-<h2>Does the effect of increasing temperature vary by months?</h2>
+</div>
+<div id="weather-anomalies-by-month" class="section level2">
+<h2>Weather anomalies by month</h2>
 <p><img src="/blogs/blog7_files/figure-html/facet_wrap-1.png" width="648" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>comparison &lt;- tidyweather %&gt;% 
   filter(Year&gt;= 1881) %&gt;%     #remove years prior to 1881
@@ -120,14 +126,20 @@ ggplot(tidyweather, aes(x=date, y = delta))+
     Year %in% c(1981:2010) ~ &quot;1981-2010&quot;,
     TRUE ~ &quot;2011-present&quot;
   ))</code></pre>
+</div>
+<div id="density-of-monthly-temperature-anomalies" class="section level2">
+<h2>Density of monthly temperature anomalies</h2>
 <pre class="r"><code>ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
   theme_bw() +                #theme
-  labs (title = &quot;Last 40 years show strongest Delta&quot;,
+  labs (title = &quot;Last 40 years show highest Delta&quot;,
     subtitle = &quot;Density Plot for Monthly Temperature Anomalies&quot;,
     x = &quot;Delta&quot;,
     y = &quot;Density&quot;)         #changing y-axis label to sentence case</code></pre>
 <p><img src="/blogs/blog7_files/figure-html/density_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="average-yearly-weather-anaomoly-development" class="section level2">
+<h2>Average yearly weather anaomoly development</h2>
 <pre class="r"><code>#creating yearly averages
 average_annual_anomaly &lt;- tidyweather %&gt;% 
   group_by(Year) %&gt;%   #grouping data by Year

@@ -5,8 +5,10 @@ output: html_document
 
 
 
-<div id="beers-wine-and-other-spirits" class="section level2">
-<h2>.. beers, wine and other spirits!</h2>
+<div id="beers-wine-and-other-spirits" class="section level1">
+<h1>… beers, wine and other spirits!</h1>
+<div id="load-and-setup" class="section level2">
+<h2>Load and setup</h2>
 <pre class="r"><code>knitr::opts_chunk$set(
   message = FALSE, 
   warning = FALSE, 
@@ -20,6 +22,7 @@ knitr::opts_chunk$set(
   fig.height=6.75,
   fig.align = &quot;center&quot;
 )</code></pre>
+</div>
 </div>
 <div id="where-do-people-drink-the-most-beer-wine-and-spirits" class="section level1">
 <h1>Where Do People Drink The Most Beer, Wine And Spirits?</h1>
@@ -360,6 +363,8 @@ total_litres_of_pure_alcohol
 </tr>
 </tbody>
 </table>
+<div id="beer" class="section level2">
+<h2>Beer</h2>
 <pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
 
 beer &lt;- drinks %&gt;% 
@@ -382,6 +387,9 @@ ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servin
            subtitle = &quot;Top 25 Beer Consuming Countries&quot;) + 
   theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
 <p><img src="/blogs/blog6_files/figure-html/beer_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="wine" class="section level2">
+<h2>Wine</h2>
 <pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
 
 wine &lt;- drinks %&gt;% 
@@ -404,6 +412,9 @@ ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servin
        subtitle = &quot;Top 25 Wine Consuming Countries&quot;) + 
   theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
 <p><img src="/blogs/blog6_files/figure-html/wine_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="spirits" class="section level2">
+<h2>Spirits</h2>
 <pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
 
 spirit &lt;- drinks %&gt;% 
@@ -426,4 +437,5 @@ ggplot(top25_spirit, aes(x = reorder(country, desc(spirit_servings)), y= spirit_
    subtitle = &quot;Top 25 spirit Consuming Countries&quot;) +
   theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
 <p><img src="/blogs/blog6_files/figure-html/spirit_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
 </div>

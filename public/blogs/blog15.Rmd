@@ -15,6 +15,8 @@ slug: blog15
 title: Global life expectancy development
 ---
 
+## Load and setup
+
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(gapminder)  # gapminder dataset
@@ -27,6 +29,8 @@ glimpse(gapminder)
 head(gapminder, 20) # look at the first 20 rows of the dataframe
 
 ```
+
+## Germany
 
 ```{r}
 country_data <- gapminder %>% 
@@ -49,6 +53,11 @@ NULL
 
 print(plot2)
 ```
+### Commentary
+
+Life expectancy in Germany has been almost linearly increasing since 1952. Nowadays, people on average are expected to live around 80 years, which seems quite an increase from around 68 years in 1952. A period of strong economic growth, accompanied by progress in the medical / health area seem to drive this positive trend.  
+
+## Europe
 
 ```{r lifeExp_one_continent}
 ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= country))+
@@ -60,6 +69,12 @@ ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= co
          y = "Life Expectancy")+
     NULL
 ```
+
+### Commentary
+
+European countries show quite a stable improvement of life expectancy over the years. This includes that the general variability in life expectancy between European countries decreases (as can be observed by the closer lines at the right hand side of the plot). 
+
+## Global
 
 ```{r lifeExp_facet_by_continent}
  ggplot(data = gapminder , mapping = aes(x = year  , y =  lifeExp, colour= country))+
@@ -74,13 +89,9 @@ ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= co
     NULL
 ```
 
-# Commentary
-
-## Overall
+### Commentary
 
 Overall life expectancy trend is positive. Though, it seems that the variance in life expectancy in European countries in 1952 was smaller compared to all other continents (exc. Oceania), this still seems to hold at the end of the observation period. With African countries' life expectancies still being quite spread apart.
 
-## Germany
 
-Life expectancy in Germany has been almost linearly increasing since 1952. Nowadays, people on average are expected to live around 80 years, which seems quite an increase from around 68 years in 1952. A period of strong economic growth, accompanied by progress in the medical / health area seem to drive this positive trend.  
 

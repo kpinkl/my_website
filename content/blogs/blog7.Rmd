@@ -50,6 +50,8 @@ library(kableExtra)
 library(scales)
 ```
 
+## Load and setup
+
 ```{r weather_data, cache=TRUE}
 
 weather <- 
@@ -70,6 +72,7 @@ weather_selected_long <- weather_selected %>%
 
 ```
 
+## Weather anomalies by year
 
 ```{r scatter_plot}
 
@@ -90,7 +93,7 @@ ggplot(tidyweather, aes(x=date, y = delta))+
 
 ```
 
-## Does the effect of increasing temperature vary by months? 
+## Weather anomalies by month 
 
 ```{r facet_wrap, echo=FALSE}
 
@@ -126,18 +129,21 @@ comparison <- tidyweather %>%
 
 ```
 
+## Density of monthly temperature anomalies
 
 ```{r density_plot}
 
 ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
   theme_bw() +                #theme
-  labs (title = "Last 40 years show strongest Delta",
+  labs (title = "Last 40 years show highest Delta",
     subtitle = "Density Plot for Monthly Temperature Anomalies",
     x = "Delta",
     y = "Density")         #changing y-axis label to sentence case
 
 ```
+
+## Average yearly weather anaomoly development
 
 ```{r averaging}
 
