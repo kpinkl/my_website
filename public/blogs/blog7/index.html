@@ -152,7 +152,7 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
 <p><img src="/blogs/blog7_files/figure-html/averaging-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>
 <div id="confidence-interval-for-delta-variable" class="section level2">
-<h2>Confidence Interval for <code>delta</code> variable</h2>
+<h2>95% confidence interval for <code>delta</code> variable</h2>
 <pre class="r"><code>formula_ci &lt;- comparison %&gt;% 
   filter(interval== &quot;2011-present&quot;) %&gt;% # choose the interval 2011-present
     filter(!is.na(delta)) %&gt;% 

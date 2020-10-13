@@ -167,7 +167,7 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
 ```
 
 
-## Confidence Interval for `delta` variable
+## 95% confidence interval for `delta` variable
 
 
 ```{r, calculate_CI_using_formula}
