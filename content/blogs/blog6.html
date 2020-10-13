@@ -396,7 +396,13 @@ top25_wine &lt;- wine %&gt;%
 
 #Use ggplot() to plot only the top 25 entries summarised in top25_wine, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
 
-ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servings),) + geom_col(fill=&quot;red&quot;) + labs(x=&quot;Country&quot;,y = &quot;Wine Servings Consumed Per Person&quot;, title = &quot;Top 25 Wine Consuming Countries&quot;) + theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
+ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servings),) +
+  geom_col(fill=&quot;red&quot;) +
+  labs(x=&quot;Country&quot;,
+       y = &quot;Wine Servings Consumed Per Person&quot;, 
+       title = &quot;European wine production regions top the consumption rankings&quot;,
+       subtitle = &quot;Top 25 Wine Consuming Countries&quot;) + 
+  theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
 <p><img src="/blogs/blog6_files/figure-html/wine_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
 
@@ -413,8 +419,11 @@ top25_spirit &lt;- spirit %&gt;%
 #Use ggplot() to plot only the top 25 entries summarised in top25_spirit, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
 
 ggplot(top25_spirit, aes(x = reorder(country, desc(spirit_servings)), y= spirit_servings),) + 
-  geom_col(fill=&quot;dark green&quot;) + 
-  labs(x=&quot;Country&quot;,y = &quot;Spirit Servings Consumed Per Person&quot;, title = &quot;Top 25 spirit Consuming Countries&quot;) +
+  geom_col(fill=&quot;purple&quot;) + 
+  labs(x=&quot;Country&quot;,
+   y = &quot;Spirits Consumed Per Person&quot;,
+   title = &quot;Carribbean and Eastern European countries place top ranks on spirits ranking&quot;,
+   subtitle = &quot;Top 25 spirit Consuming Countries&quot;) +
   theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
 <p><img src="/blogs/blog6_files/figure-html/spirit_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
 </div>

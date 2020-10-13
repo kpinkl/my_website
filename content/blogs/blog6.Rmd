@@ -109,7 +109,13 @@ top25_wine <- wine %>%
 
 #Use ggplot() to plot only the top 25 entries summarised in top25_wine, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
 
-ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servings),) + geom_col(fill="red") + labs(x="Country",y = "Wine Servings Consumed Per Person", title = "Top 25 Wine Consuming Countries") + theme(axis.text.x = element_text(angle=30, size=7))
+ggplot(top25_wine, aes(x = reorder(country, desc(wine_servings)), y= wine_servings),) +
+  geom_col(fill="red") +
+  labs(x="Country",
+       y = "Wine Servings Consumed Per Person", 
+       title = "European wine production regions top the consumption rankings",
+       subtitle = "Top 25 Wine Consuming Countries") + 
+  theme(axis.text.x = element_text(angle=30, size=7))
 
 
 ```
@@ -131,8 +137,11 @@ top25_spirit <- spirit %>%
 #Use ggplot() to plot only the top 25 entries summarised in top25_spirit, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
 
 ggplot(top25_spirit, aes(x = reorder(country, desc(spirit_servings)), y= spirit_servings),) + 
-  geom_col(fill="dark green") + 
-  labs(x="Country",y = "Spirit Servings Consumed Per Person", title = "Top 25 spirit Consuming Countries") +
+  geom_col(fill="purple") + 
+  labs(x="Country",
+   y = "Spirits Consumed Per Person",
+   title = "Carribbean and Eastern European countries place top ranks on spirits ranking",
+   subtitle = "Top 25 spirit Consuming Countries") +
   theme(axis.text.x = element_text(angle=30, size=7))
 
 ```
