@@ -9,17 +9,14 @@ categories:
 date: "2017-10-31T21:28:43-05:00"
 description: "Spirits consumption across the world"
 draft: false
-image: pic10.jpg
+image: pic02.jpg
 keywords: ""
 slug: blog6
 title: Spirits consumption overview
 ---
 
-.. beers, wine and other spirits!
+## .. beers, wine and other spirits!
 
-## Approach
-
-ADD
 
 ```{r setup}
 knitr::opts_chunk$set(
@@ -57,6 +54,7 @@ library(patchwork)
 ```
   
 # Where Do People Drink The Most Beer, Wine And Spirits?
+
 ```{r load_alcohol_data}
 library(fivethirtyeight)
 data(drinks) #Load in the dataset from the fivethirtyeight package
@@ -85,7 +83,13 @@ top25_beer <- beer %>%
 
 #Use ggplot() to plot only the top 25 entries summarised in top25_beer, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
 
-ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servings),) + geom_col(fill="blue") + labs(x="Country",y = "Beer Servings Consumed Per Person", title = "Top 25 Beer Consuming Countries") + theme(axis.text.x = element_text(angle=30, size=7))
+ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servings),) +
+      geom_col(fill="blue") +
+      labs(x="Country",
+           y = "Beer Servings Consumed Per Person",
+           title = "Namibia beats Czech Republic for the beer consumption top spot",
+           subtitle = "Top 25 Beer Consuming Countries") + 
+  theme(axis.text.x = element_text(angle=30, size=7))
 
 ```
 

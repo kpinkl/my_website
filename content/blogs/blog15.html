@@ -38,34 +38,30 @@ output: html_document
 ## 18 Albania     Europe     1977    68.9  2509048     3533.
 ## 19 Albania     Europe     1982    70.4  2780097     3631.
 ## 20 Albania     Europe     1987    72    3075321     3739.</code></pre>
-<p>Your task is to produce two graphs of how life expectancy has changed over the years for the <code>country</code> and the <code>continent</code> you come from.</p>
-<p>I have created the <code>country_data</code> and <code>continent_data</code> with the code below.</p>
 <pre class="r"><code>country_data &lt;- gapminder %&gt;% 
             filter(country == &quot;Germany&quot;) # just choosing Germany, as this is where I come from
 
 continent_data &lt;- gapminder %&gt;% 
             filter(continent == &quot;Europe&quot;)</code></pre>
-<p>First, create a plot of life expectancy over time for the single country you chose. You should use <code>geom_point()</code> to see the actual data points and <code>geom_smooth(se = FALSE)</code> to plot the underlying trendlines. You need to remove the comments <strong>#</strong> from the lines below for your code to run.</p>
 <pre class="r"><code>  plot2 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE) +
-  labs(title = &quot;Life expectancy development in Germany&quot;,
-  x = &quot;Year&quot;,
-  y = &quot;Life Expectancy&quot;) +
+  labs(subtitle = &quot;Steady increse in life expectancy since the 1950s&quot;,
+       title = &quot;Life expectancy development in Germany 1950 - 2020&quot;,
+        sx = &quot;Year&quot;,
+        y = &quot;Life Expectancy&quot;) +
 NULL
 
 
 print(plot2)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/blog15_files/figure-html/lifeExp_one_country_with_label-1.png" width="672" /></p>
-<p>Secondly, produce a plot for all countries in the <em>continent</em> you come from. (Hint: map the <code>country</code> variable to the colour aesthetic).</p>
 <pre class="r"><code>ggplot(data =  continent_data, mapping = aes(x =  year, y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
     NULL</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/blog15_files/figure-html/lifeExp_one_continent-1.png" width="672" /></p>
-<p>Finally, using the original <code>gapminder</code> data, produce a life expectancy over time graph, grouped (or faceted) by continent. We will remove all legends, adding the <code>theme(legend.position="none")</code> in the end of our ggplot.</p>
 <pre class="r"><code> ggplot(data = gapminder , mapping = aes(x = year  , y =  lifeExp, colour= country))+
     geom_point() + 
     geom_smooth(se = FALSE) +
@@ -74,12 +70,14 @@ print(plot2)</code></pre>
     NULL</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/blog15_files/figure-html/lifeExp_facet_by_continent-1.png" width="672" /></p>
-<p>Given these trends, what can you say about life expectancy since 1952? Again, don’t just say what’s happening in the graph. Tell some sort of story and speculate about the differences in the patterns.</p>
-<div id="germany" class="section level1">
-<h1>Germany</h1>
+<div id="commentary" class="section level1">
+<h1>Commentary</h1>
+<div id="overall" class="section level2">
+<h2>Overall</h2>
+<p>Overall life expectancy trend is positive. Though, it seems that the variance in life expectancy in European countries in 1952 was smaller compared to all other continents (exc. Oceania), this still seems to hold at the end of the observation period. With African countries’ life expectancies still being quite spread apart.</p>
+</div>
+<div id="germany" class="section level2">
+<h2>Germany</h2>
 <p>Life expectancy in Germany has been almost linearly increasing since 1952. Nowadays, people on average are expected to live around 80 years, which seems quite an increase from around 68 years in 1952. A period of strong economic growth, accompanied by progress in the medical / health area seem to drive this positive trend.</p>
 </div>
-<div id="overall" class="section level1">
-<h1>Overall</h1>
-<p>Overall life expectancy trend is positive. Though, it seems that the variance in life expectancy in European countries in 1952 was smaller compared to all other continents (exc. Oceania), this still seems to hold at the end of the observation period. With African countries’ life expectancies still being quite spread apart.</p>
 </div>

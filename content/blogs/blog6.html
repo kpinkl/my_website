@@ -5,10 +5,8 @@ output: html_document
 
 
 
-<p>.. beers, wine and other spirits!</p>
-<div id="approach" class="section level2">
-<h2>Approach</h2>
-<p>ADD</p>
+<div id="beers-wine-and-other-spirits" class="section level2">
+<h2>.. beers, wine and other spirits!</h2>
 <pre class="r"><code>knitr::opts_chunk$set(
   message = FALSE, 
   warning = FALSE, 
@@ -376,7 +374,13 @@ top25_beer &lt;- beer %&gt;%
 
 #Use ggplot() to plot only the top 25 entries summarised in top25_beer, adjusting the x-axis labels for readibility, as well as colour, axis labels and title
 
-ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servings),) + geom_col(fill=&quot;blue&quot;) + labs(x=&quot;Country&quot;,y = &quot;Beer Servings Consumed Per Person&quot;, title = &quot;Top 25 Beer Consuming Countries&quot;) + theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
+ggplot(top25_beer, aes(x = reorder(country, desc(beer_servings)), y= beer_servings),) +
+      geom_col(fill=&quot;blue&quot;) +
+      labs(x=&quot;Country&quot;,
+           y = &quot;Beer Servings Consumed Per Person&quot;,
+           title = &quot;Namibia beats Czech Republic for the beer consumption top spot&quot;,
+           subtitle = &quot;Top 25 Beer Consuming Countries&quot;) + 
+  theme(axis.text.x = element_text(angle=30, size=7))</code></pre>
 <p><img src="/blogs/blog6_files/figure-html/beer_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>#Use the pipe to select only the beer_servings variable, and arrange countries in descending order of serving
 
