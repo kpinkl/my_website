@@ -118,7 +118,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "How life expectancy changed over the years - discover how!"
       subtitle = "Global life expectancy development"
-      image = "life.jpg"
+      image = "life.jpeg"
       url = "blogs/blog15"
 
     #[[params.tiles.showcase]]
