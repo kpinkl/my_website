@@ -145,8 +145,7 @@ disqusShortname = ""
     You should not rely upon the material or information on the website as basis for making any business, legal or any other decisions.
     Any reliance you place on such material is therefore strictly at your own risk."""
     buttonText = "Start"
-    url = "blogs"
-
+    url = "blogs/about-me1"
 
   # Contact section
   [params.contact]
